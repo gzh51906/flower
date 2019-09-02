@@ -19,7 +19,7 @@
           v-show="index===activeIdx"
         >
           <ul>
-            <img :src="item.imgUrl" style="width:100%;height:88px;" />
+            <img :src="item.imgUrl" style="width:95%;height:88px;" />
 
             <li
               v-for="item in item.smimg"
