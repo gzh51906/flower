@@ -172,10 +172,4 @@ body {
   height:560px;
   overflow-y:auto
 }
-a {
-    text-decoraction:none;
-}
-.router-link-active {
-    text-decoration:none;
-}
 </style>

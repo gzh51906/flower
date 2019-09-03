@@ -1,9 +1,12 @@
 <template>
-  <div>空购物车</div>
+  <div>列表页</div>
 </template>
 
 <script>
 export default {
+  created() {
+    console.log('goods',this.$route)
+  }
 
 }
 </script>
