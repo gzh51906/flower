@@ -85,7 +85,7 @@
           </span>
           <p>
             {{item.letta}}
-            <span>{{item.zheprice}}</span>
+            <span>{{item.oldprice}}</span>
           </p>
           <!-- <p>  // 删除线，，，加到价格上
               <span v-text="`$${item.letta}`"></span>
@@ -105,6 +105,7 @@
         </div>
       </div>
     </div>
+
     <div class="productlist1">
       <h3 style="text-align:center;">送恋人/爱情鲜花</h3>
       <van-card
@@ -337,7 +338,7 @@ export default {
           title: "超值好货",
           tags: "限时直降",
           letta: "￥132",
-          zheprice: "￥188",
+          oldprice: "￥188",
           imgurl: "../../static/img/home/jing/m_home_special.png"
         }
       ],

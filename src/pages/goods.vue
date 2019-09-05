@@ -7,13 +7,10 @@
       </div>
     </van-nav-bar>
     <van-tabs v-model="active" sticky line-height="0" title-active-color="orange">
-      <van-tab v-for="index in 4" :title="'选项 ' + index" :key="index"></van-tab>
+      <van-tab v-for="(item,index) in goodslist1" :title="item" :key="index"></van-tab>
     </van-tabs>
-    <van-tabs type="card">
-      <van-tab title="标签 1">内容 1</van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
-      <van-tab title="标签 3">内容 3</van-tab>
-      <van-tab title="标签 4">内容 4</van-tab>
+    <van-tabs type="card" >
+      <van-tab v-for="item in goodslist2" :key="item" :title="item">{{item}}</van-tab>
     </van-tabs>
 
       <ul style="display:flex;flex-wrap:wrap; justify-content: space-between;padding:5px;">
@@ -75,7 +72,9 @@
 export default {
   data() {
     return {
-      active: 0
+      active: 0,
+      goodslist1:["综合","销量","价格","新品"],
+      goodslist2:["送女友","送男友","送朋友","送长辈"]
     };
   },
   created() {
