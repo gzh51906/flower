@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="box">
     <div>
       <van-nav-bar title="个人中心" border="true" @click-left="onClickLeft">
         <van-icon name="arrow-left" slot="left" />
@@ -135,7 +135,7 @@
 export default {};
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 // p {
 //   display: block;
 //   margin-block-start: 1em;
@@ -143,8 +143,8 @@ export default {};
 //   margin-inline-start: 0px;
 //   margin-inline-end: 0px;
 // }
-body {
-  background: #999;
+#box {
+  background: #f2f2f2;
 }
 .margin-LR {
   margin-left: 8px;
@@ -248,19 +248,19 @@ body {
   text-align: center;
 }
 .userinformation-notlogin-gologin {
-//   // margin-top: 0.57142857rem;
+  //   // margin-top: 0.57142857rem;
   width: 40%;
   margin: 0 auto;
-//   // text-align: center;
-//   span {
-//     display: block;
-//     width: 9rem;
-//     height: 2.57142857rem;
-//     line-height: 2.57142857rem;
-//     background-color: #fff;
-//     border-radius: 4rem;
-//     font-weight: 500;
-//   }
+  //   // text-align: center;
+  //   span {
+  //     display: block;
+  //     width: 9rem;
+  //     height: 2.57142857rem;
+  //     line-height: 2.57142857rem;
+  //     background-color: #fff;
+  //     border-radius: 4rem;
+  //     font-weight: 500;
+  //   }
 }
 
 .order-button {

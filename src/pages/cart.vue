@@ -12,14 +12,10 @@
 export default {};
 </script>
 
-<style>
-<<<<<<< HEAD
-=======
+<style scoped>
 #qwe {
-  height: 50px;
-  line-height: 50px;
-  font-size: 18px;
+  height:  50px;
+  line-height:  50px;
+  font-size:  18px;
 }
-
->>>>>>> f253912070c8ce134de87d064d17d7e0a3cd1929
 </style>
