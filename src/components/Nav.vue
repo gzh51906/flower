@@ -18,7 +18,7 @@ export default {
     return {
       active: "home"
     };
-  },
+  }
 };
 </script>
 
@@ -29,5 +29,4 @@ export default {
 .goods::-webkit-scrollbar {
         display:none;
     } */
-
 </style>
