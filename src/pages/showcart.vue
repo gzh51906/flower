@@ -26,14 +26,8 @@
 </template>
 
 <script>
-// import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from 'vant';
 export default {
-  // components: {
-  //   [Card.name]: Card,
-  //   [Checkbox.name]: Checkbox,
-  //   [SubmitBar.name]: SubmitBar,
-  //   [CheckboxGroup.name]: CheckboxGroup
-  // },
+
   data() {
     return {
       checkedGoods: ['1', '2', '3'],
