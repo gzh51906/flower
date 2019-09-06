@@ -1,19 +1,53 @@
 <template>
   <div>
-    <van-nav-bar title="购物车" id="qwe">
-      <div  slot="left">
-        <router-link :to="{path:'/home'}">
-          <van-icon name="arrow-left" />
-        </router-link>
-      </div>
+    <!-- 导航栏 -->
+    <van-nav-bar>
+      <van-icon name="arrow-left" color="#000" size="25px" slot="left" @click="goback()" />
+      <!-- <van-image
+        slot="title"
+        class-prefix="nav-img"
+        width="150px"
+        height="20px"
+        src="https://m.hua.com/content/vue/login/static/img/m_hualogo.png"
+      />-->
+      <div slot="title">购物车</div>
+      <van-icon name="wap-nav" color="#000" size="25px" slot="right" @click="showNav()" />
     </van-nav-bar>
+    <!-- 二级导航 -->
+    <van-col span="5" class="hidden-nav" v-if="navShow">
+      <van-row type="flex" justify="space-around" align="center">
+        <router-link :to="{path:'/home'}">
+          <van-icon name="wap-home"></van-icon>首页
+        </router-link>
+      </van-row>
+      <van-row type="flex" justify="space-around" align="center">
+        <router-link :to="{path:'/sort'}">
+          <van-icon name="search"></van-icon>分类
+        </router-link>
+      </van-row>
+      <van-row type="flex" justify="space-around" align="center">
+        <router-link :to="{path:'/cart'}">
+          <van-icon name="shopping-cart-o"></van-icon>购物车
+        </router-link>
+      </van-row>
+      <van-row type="flex" justify="space-around" align="center">
+        <router-link :to="{path:'/mine'}">
+          <van-icon name="smile-o"></van-icon>我的
+        </router-link>
+      </van-row>
+    </van-col>
+
+    <!-- 商品列表 -->
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
+      <!-- 勾选框 -->
       <van-checkbox
+        checked-color="#FF734C"
         class="card-goods__item"
         v-for="item in goods"
         :key="item.id"
         :name="item.id"
       >
+        <!-- 商品信息 -->
         <van-card
           :title="item.title"
           :desc="item.desc"
@@ -21,6 +55,10 @@
           :price="formatPrice(item.price)"
           :thumb="item.thumb"
         />
+        <!-- 商品数量 -->
+        <div class="stepper">
+          数量<van-stepper v-model="item.num" step="1" button-size="22" />
+        </div>
       </van-checkbox>
     </van-checkbox-group>
     <van-submit-bar
@@ -36,8 +74,18 @@
 export default {
   data() {
     return {
-      checkedGoods: ["1", "2", "3"],
+      navShow: false,
+      checkedGoods: ["1", "2", "10"],
       goods: [
+        {
+          id: "10",
+          title: "商品名字",
+          desc: "快递信息,没有就为空",
+          price: 3333333,
+          num: 1,
+          thumb:
+            "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg"
+        },
         {
           id: "1",
           title: "进口香蕉",
@@ -69,10 +117,12 @@ export default {
     };
   },
   computed: {
+    // 结算按钮商品数量
     submitBarText() {
       const count = this.checkedGoods.length;
       return "结算" + (count ? `(${count})` : "");
     },
+    // 购物车总价
     totalPrice() {
       return this.goods.reduce(
         (total, item) =>
@@ -82,6 +132,15 @@ export default {
     }
   },
   methods: {
+    // 二级导航显示隐藏
+    showNav() {
+      this.navShow = !this.navShow;
+      console.log(this.navShow);
+    },
+    // 返回上一级
+    goback() {
+      this.$router.go(-1);
+    },
     formatPrice(price) {
       return (price / 100).toFixed(2);
     },
@@ -93,6 +152,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.hidden-nav {
+  position: absolute;
+  right: 10px;
+  top: 46px;
+  z-index: 2;
+  background: #fff;
+  border-radius: 5px;
+  .van-row {
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0px;
+  }
+}
 .card-goods {
   padding: 10px 0;
   background-color: #fff;
@@ -114,6 +187,20 @@ export default {
     }
     .van-card__price {
       color: #f44;
+    }
+  }
+  .stepper {
+    position: absolute;
+    display: inline-block;
+    font-size: 14px;
+    width:100px;
+    right: 130px;
+    bottom: 20px;
+    .van-stepper{
+      position: absolute;
+      right: -20px;
+      top:0px;
+      // background: red;
     }
   }
 }

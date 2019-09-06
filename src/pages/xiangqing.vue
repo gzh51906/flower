@@ -10,15 +10,14 @@
         height="20px"
         src="https://m.hua.com/content/vue/login/static/img/m_hualogo.png"
       />
-      <van-icon name="wap-nav" color="#000" size="25px" slot="right" @click="showNav()"/>
+      <van-icon name="wap-nav" color="#000" size="25px" slot="right" @click="showNav()" />
     </van-nav-bar>
     <!-- 二级导航 -->
     <van-col span="5" class="hidden-nav" v-if="navShow">
-      <van-row type="flex" justify="space-around" align="center" >
+      <van-row type="flex" justify="space-around" align="center">
         <router-link :to="{path:'/home'}">
           <van-icon name="wap-home"></van-icon>首页
         </router-link>
-
       </van-row>
       <van-row type="flex" justify="space-around" align="center">
         <router-link :to="{path:'/sort'}">
@@ -27,14 +26,13 @@
       </van-row>
       <van-row type="flex" justify="space-around" align="center">
         <router-link :to="{path:'/cart'}">
-         <van-icon name="shopping-cart-o"></van-icon>购物车
+          <van-icon name="shopping-cart-o"></van-icon>购物车
         </router-link>
       </van-row>
       <van-row type="flex" justify="space-around" align="center">
-         <router-link :to="{path:'/mine'}">
-         <van-icon name="smile-o"></van-icon>我的
+        <router-link :to="{path:'/mine'}">
+          <van-icon name="smile-o"></van-icon>我的
         </router-link>
-
       </van-row>
     </van-col>
 
@@ -129,7 +127,7 @@ export default {
     // 二级导航显示隐藏
     showNav() {
       this.navShow = !this.navShow;
-      console.log(this.navShow)
+      console.log(this.navShow);
     },
     // 返回上一级
     goback() {
