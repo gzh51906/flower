@@ -42,47 +42,42 @@
       </van-cell-group>
 
       <!-- 用户面板 -->
-      <van-cell-group class="user-panel">
-        <van-call class="link-box">
-          <span class="order-button-one">
-            <van-icon name="paid" size="35px" info="0" />
-            <p>优惠券</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="vip-card-o" size="35px" />
-            <p>权益卡</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="balance-o" size="35px" />
-            <p>余额</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="diamond-o" size="35px" />
-            <p>会员积分</p>
-          </span>
-        </van-call>
-
+      <van-grid :column-num="4" class="user-panel">
+        <!-- 第一栏 -->
+        <van-grid-item class="order-button-one inline-block">
+          <van-icon name="paid" size="35px" info="0" />
+          <p>优惠券</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="vip-card-o" size="35px" />
+          <p>权益卡</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="balance-o" size="35px" />
+          <p>余额</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="diamond-o" size="35px" />
+          <p>会员积分</p>
+        </van-grid-item>
         <!-- 第二栏 -->
-        <van-call class="link-box">
-          <span class="order-button-one">
-            <van-icon name="location-o" size="35px" />
-            <p>收货地址</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="birthday-cake-o" size="35px" />
-            <p>生日纪念提醒</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="star-o" size="35px" />
-            <p>待评价</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="underway-o" size="35px" />
-            <p>浏览记录</p>
-          </span>
-        </van-call>
-      </van-cell-group>
-
+        <van-grid-item class="order-button-one">
+          <van-icon name="location-o" size="35px" />
+          <p>收货地址</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="birthday-cake-o" size="35px" />
+          <p>生日纪念提醒</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="star-o" size="35px" />
+          <p>待评价</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="underway-o" size="35px" />
+          <p>浏览记录</p>
+        </van-grid-item>
+      </van-grid>
       <!-- 微信客服 -->
       <van-cell-group class="user-panel">
         <div class="kefu-body">
@@ -107,26 +102,25 @@
       </van-cell-group>
 
       <!-- 帮助/设置 -->
-      <van-cell-group class="user-panel">
-        <van-call class="link-box">
-          <span class="order-button-one">
-            <van-icon name="service-o" size="35px" />
-            <p>联系客服</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="question-o" size="35px" />
-            <p>帮助中心</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="info-o" size="35px" />
-            <p>关于礼花</p>
-          </span>
-          <span class="order-button-one">
-            <van-icon name="setting-o" size="35px" />
-            <p>设置</p>
-          </span>
-        </van-call>
-      </van-cell-group>
+      <van-grid :column-num="4" class="user-panel">
+        <!-- 第一栏 -->
+        <van-grid-item class="order-button-one inline-block">
+          <van-icon name="service-o" size="35px" />
+          <p>联系客服</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="question-o" size="35px" />
+          <p>帮助中心</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="info-o" size="35px" />
+          <p>关于礼花</p>
+        </van-grid-item>
+        <van-grid-item class="order-button-one">
+          <van-icon name="setting-o" size="35px" />
+          <p>设置</p>
+        </van-grid-item>
+      </van-grid>
     </section>
   </div>
 </template>
@@ -135,15 +129,8 @@
 export default {};
 </script>
 
-<style lang="less" scoped>
-// p {
-//   display: block;
-//   margin-block-start: 1em;
-//   margin-block-end: 1em;
-//   margin-inline-start: 0px;
-//   margin-inline-end: 0px;
-// }
-#box{
+<style lang="less" scoped >
+#box {
   background: #f2f2f2;
 }
 .margin-LR {
@@ -165,17 +152,14 @@ export default {};
     }
   }
   &-panel {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     .margin-LR();
-    .link-box {
-      display: flex;
-      justify-content: space-around;
-      border-bottom: 1px solid #ccc;
-      padding: 20px 0px;
-      p {
-        margin: 0px;
-        font-size: 12px;
-      }
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px;
+    p {
+      margin: 0px;
+      font-size: 12px;
     }
     // 客服
     .kefu-body {
@@ -248,19 +232,19 @@ export default {};
   text-align: center;
 }
 .userinformation-notlogin-gologin {
-//   // margin-top: 0.57142857rem;
+  //   // margin-top: 0.57142857rem;
   width: 40%;
   margin: 0 auto;
-//   // text-align: center;
-//   span {
-//     display: block;
-//     width: 9rem;
-//     height: 2.57142857rem;
-//     line-height: 2.57142857rem;
-//     background-color: #fff;
-//     border-radius: 4rem;
-//     font-weight: 500;
-//   }
+  //   // text-align: center;
+  //   span {
+  //     display: block;
+  //     width: 9rem;
+  //     height: 2.57142857rem;
+  //     line-height: 2.57142857rem;
+  //     background-color: #fff;
+  //     border-radius: 4rem;
+  //     font-weight: 500;
+  //   }
 }
 
 .order-button {
@@ -276,6 +260,7 @@ export default {};
 .order-button-one {
   height: 100%;
   flex: 1;
+  font-size: 14px;
   display: inline-block;
   text-align: center;
 }
