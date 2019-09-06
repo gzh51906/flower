@@ -51,7 +51,7 @@ export default new Router({
       }
     },
     {
-      path: '/goods',
+      path: '/goods/:id', // 动态传参
       name: 'goods',
       component: goods,
       meta: {
@@ -59,7 +59,7 @@ export default new Router({
       }
     },
     {
-      path: '/xiangqing',
+      path: '/xiangqing/:id',
       name: 'xiangqing',
       component: xiangqing,
       meta: {
