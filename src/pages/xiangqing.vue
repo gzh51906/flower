@@ -26,20 +26,20 @@
       </van-row>
       <van-row type="flex" justify="space-around" align="center">
         <router-link :to="{path:'/cart'}">
-          <van-icon name="shopping-cart-o"></van-icon>购物车
+        <van-icon name="shopping-cart-o"></van-icon>购物车
         </router-link>
       </van-row>
       <van-row type="flex" justify="space-around" align="center">
         <router-link :to="{path:'/mine'}">
-          <van-icon name="smile-o"></van-icon>我的
+        <van-icon name="smile-o"></van-icon>我的
         </router-link>
       </van-row>
     </van-col>
 
     <!-- 轮播图 -->
     <van-swipe class="goods-swipe" @change="onChange">
-      <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb" />
+      <van-swipe-item v-for="(item,index) in goodslis.childimg" :key="index">
+        <img :src="item" />
       </van-swipe-item>
       <div class="custom-indicator" slot="indicator">{{ current + 1 }}/4</div>
     </van-swipe>
@@ -50,8 +50,8 @@
       <van-cell class="proinfo-head">
         <van-cell class="goods-name">
           <div class="goods-title">
-            {{ goods.title }}
-            <span class="text-orange">{{goods.text_orange}}</span>
+            {{ goodslis.Cpmc }}
+            <span class="text-orange">{{goodslis.des}}</span>
           </div>
         </van-cell>
         <!-- 收藏按钮 -->
@@ -60,16 +60,16 @@
 
       <van-cell class="proinfo-body">
         <!-- 价格 -->
-        <div class="goods-price">{{ formatPrice(goods.price) }}</div>
-        <s>{{ formatPrice(goods.fake_price) }}</s>
-        <div class="goods-sales">已售{{goods.sold}}件</div>
+        <div class="goods-price">￥{{ goodslis.Price }}</div>
+        <s>￥{{ goodslis.LinePrice }}</s>
+        <div class="goods-sales">已售{{goodslis.sell}}件</div>
       </van-cell>
     </van-cell-group>
 
     <van-cell-group class="goods-cell-group">
       <div class="detailsinfo-item">
         <div class="detailsinfo-item-title">材料</div>
-        <div class="detailsinfo-item-desc">{{goods.materials}}</div>
+        <div class="detailsinfo-item-desc">{{goodslis.Instro}}</div>
       </div>
       <div class="detailsinfo-item">
         <div class="detailsinfo-item-title">配送</div>
@@ -92,21 +92,16 @@ export default {
     return {
       current: 0,
       navShow: false,
-      goods: {
-        title: "-------------白字标题------------",
-        text_orange: "----------------橙字标题---------------",
-        price: 333333,
-        fake_price: 444444,
-        sold: 123123,
-        materials: "这束花由什么花组成",
-        thumb: [
-          "/static/img/XiangQingTest/ff6b30c34870db5bfc65c5e39576c14.jpg",
-          "/static/img/XiangQingTest/09e79a46c9517c166615f5ae5e74800.jpg",
-          "/static/img/XiangQingTest/58c766263ba947d031bbbc4f34e0e42.jpg",
-          "/static/img/XiangQingTest/6269989226fd414e950ec65ccad0bd1.jpg"
-        ]
-      }
+      goodslis:{}
     };
+  },
+  //
+  created() {
+    // 创建阶段获取商品传来的id，以便使用axios请求数据
+    let {id} = this.$route.params
+    this.getData(id)
+
+
   },
   methods: {
     formatPrice(index) {
@@ -124,15 +119,44 @@ export default {
     onChange(index) {
       this.current = index;
     },
+      // 以上均为组件自带方法
+
+
     // 二级导航显示隐藏
     showNav() {
       this.navShow = !this.navShow;
-      console.log(this.navShow);
+      // console.log(this.navShow)
     },
     // 返回上一级
     goback() {
       this.$router.go(-1);
+    },
+
+    // 接收商品传来的id并请求数据以及渲染到详情页
+    async getData(id) {
+      let goods = await this.$axios.post("https://www.easy-mock.com/mock/5d6a724b081c747c411d450d/home")
+      .then(({ data: { Datas: { ProductPrices } } }) => {
+        return ProductPrices;
+      })
+      // console.log('goods',goods)   state.cartlist = state.cartlist.filter(item=>item.goods_id!=id);
+      let goodsli = goods.filter((item,index,goods)=>item.ItemCode === id)[0]
+
+      this.goodslis = {
+        Cpmc: goodsli.Cpmc,
+        Instro: goodsli.Instro,
+        ItemCode: goodsli.ItemCode,
+        LinePrice: goodsli.LinePrice,
+        Price: goodsli.Price,
+        childimg: goodsli.childimg,
+        des: goodsli.des,
+        sell: goodsli.sell
+      }
+
+
+
     }
+
+
   }
 };
 </script>
