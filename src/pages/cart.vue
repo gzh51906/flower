@@ -1,10 +1,13 @@
 <template>
   <div>
-    <van-nav-bar title="购物车" border="true" @click-left="onClickLeft" id="qwe">
-      <van-icon name="arrow-left" slot="left" />
+    <van-nav-bar title="购物车" id="qwe">
+      <div  slot="left">
+        <router-link :to="{path:'/home'}">
+          <van-icon name="arrow-left" />
+        </router-link>
+      </div>
     </van-nav-bar>
-  
-    
+
   </div>
 </template>
 
@@ -12,11 +15,10 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 #qwe {
   height: 50px;
   line-height: 50px;
   font-size: 18px;
 }
-
 </style>

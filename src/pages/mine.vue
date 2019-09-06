@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="box">
     <div>
-      <van-nav-bar title="个人中心" border="true" @click-left="onClickLeft">
+      <van-nav-bar title="个人中心">
         <van-icon name="arrow-left" slot="left" />
       </van-nav-bar>
     </div>
@@ -135,7 +135,7 @@
 export default {};
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 // p {
 //   display: block;
 //   margin-block-start: 1em;
@@ -143,8 +143,8 @@ export default {};
 //   margin-inline-start: 0px;
 //   margin-inline-end: 0px;
 // }
-body {
-  background: #999;
+#box{
+  background: #f2f2f2;
 }
 .margin-LR {
   margin-left: 8px;

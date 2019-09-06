@@ -1,5 +1,20 @@
 <template>
   <div class="goods">
+    <van-nav-bar title="列表页">
+      <div slot="left">
+        <router-link :to="{path:'/home'}">
+          <van-icon name="arrow-left" />
+        </router-link>
+      </div>
+      <div slot="right">
+        <van-icon name="service-o" />
+        <van-icon name="orders-o" style="margin-left:20px;" @click="change(aaa)" >
+            <div style="z-index:99;width:50px;height:50px;background:greenyellow;position:fixed;top:50px;right:0px;" v-if="aaa">
+              123
+            </div>
+        </van-icon>
+      </div>
+    </van-nav-bar>
     <van-swipe class="goods-swipe" :autoplay="3000">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
         <img :src="thumb" >
@@ -53,6 +68,7 @@
 export default {
   data() {
     return {
+      aaa:true,
       goods: {
         title: '美国伽力果（约680g/3个）',
         price: 2680,
@@ -74,6 +90,11 @@ export default {
     },
     sorry() {
       Toast('暂无后续逻辑~');
+    },
+    change(aaa) {
+
+        return this.aaa = !aaa;
+
     }
   }
 };

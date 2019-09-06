@@ -1,5 +1,12 @@
 <template>
   <div>
+    <van-nav-bar title="购物车" id="qwe">
+      <div  slot="left">
+        <router-link :to="{path:'/home'}">
+          <van-icon name="arrow-left" />
+        </router-link>
+      </div>
+    </van-nav-bar>
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
       <van-checkbox
         class="card-goods__item"
@@ -75,7 +82,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .card-goods {
   padding: 10px 0;
   background-color: #fff;
