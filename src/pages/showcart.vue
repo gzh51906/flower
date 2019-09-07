@@ -51,18 +51,19 @@
         <van-card
           :title="item.title"
           :desc="item.desc"
-          :num="item.num"
           :price="formatPrice(item.price)"
           :thumb="item.thumb"
         />
         <!-- 商品数量 -->
-        <div class="stepper">
-          数量<van-stepper v-model="item.num" step="1" button-size="22" />
+        <div class="stepper" v-on:click.stop>
+          数量
+          <van-stepper v-model="item.num" step="1" button-size="22" />
         </div>
       </van-checkbox>
     </van-checkbox-group>
     <van-submit-bar
       :price="totalPrice"
+      button-type="warning"
       :disabled="!checkedGoods.length"
       :button-text="submitBarText"
       @submit="onSubmit"
@@ -75,7 +76,8 @@ export default {
   data() {
     return {
       navShow: false,
-      checkedGoods: ["1", "2", "10"],
+      // 已勾选的商品的ID
+      checkedGoods: ["1", "2"],
       goods: [
         {
           id: "10",
@@ -126,7 +128,11 @@ export default {
     totalPrice() {
       return this.goods.reduce(
         (total, item) =>
-          total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0),
+          // console.log(total),
+          total +
+          (this.checkedGoods.indexOf(item.id) !== -1
+            ? item.price * item.num
+            : 0),
         0
       );
     }
@@ -189,17 +195,19 @@ export default {
       color: #f44;
     }
   }
+  // 步进器
   .stepper {
     position: absolute;
     display: inline-block;
     font-size: 14px;
-    width:100px;
-    right: 130px;
+    width: 100px;
+    right: 30px;
     bottom: 20px;
-    .van-stepper{
+    // z-index: 2;
+    .van-stepper {
       position: absolute;
       right: -20px;
-      top:0px;
+      top: 0px;
       // background: red;
     }
   }

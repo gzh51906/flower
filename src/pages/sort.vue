@@ -75,6 +75,7 @@ export default {
           name: "热门推荐",
           sming: [
             {
+              id:1,
               imgurl: "../../static/img/hot/flower.jpg",
               name: "鲜花"
             },
