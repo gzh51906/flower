@@ -512,6 +512,13 @@ export default {
       this.$router.push({ name: "xiangqing", params: { id } });
     }
   },
+  beforeRouterEnter(to,from,next) {
+    console.log(to)
+    console.log(from)
+    // next(vm =>{
+    //   vm.oldurl = from.path
+    // })
+  },
 
   // 请求数据
   async created() {

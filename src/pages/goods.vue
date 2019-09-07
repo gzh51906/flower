@@ -2,7 +2,8 @@
   <div class="goodslist">
     <van-nav-bar title="列表页">
       <div slot="left">
-          <van-icon name="arrow-left" @click="goback()"/>
+        <!-- 返回上一级 -->
+        <van-icon name="arrow-left" @click="goback()"/>
       </div>
       <div slot="right">
         <van-icon name="service-o" />
@@ -48,6 +49,7 @@
 export default {
   data() {
     return {
+      oldurl:'',
       active: 0,
       goodslist1:["综合","销量","价格","新品","送女友","送男友","送朋友","送长辈"],
       goodslis:[{
@@ -93,14 +95,31 @@ export default {
     };
   },
   created() {
-    console.log("goods", this.$route);
+    // console.log(this.$route)
+    // console.log("goods", this.$route);
     let {id} = this.$route.params;
     // this.getData(id);
   },
   methods:{
     goback() {
-      this.$router.go(-1);
+      console.log('this.$route',this.$route)
+      // this.$router.push(this.$route.path)
+      this.$router.go(-1)
     }
+  },
+  beforeRouterEnter(to,from,next) {
+    console.log(to)
+    console.log(from)
+    // next(vm =>{
+    //   vm.oldurl = from.path
+    // })
+  },
+  mounted() {
+    this.$nextTick(()=>{
+       // 验证是否获取到了上页的url
+       /* eslint-disable no-console */
+       console.log('oldurl',this.oldurl)
+     })
   }
 };
 </script>

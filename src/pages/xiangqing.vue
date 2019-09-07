@@ -50,7 +50,7 @@
       <van-cell class="proinfo-head">
         <van-cell class="goods-name">
           <div class="goods-title">
-            {{ goodslis.Cpmc }}
+            {{goodslis.Cpmc}}
             <span class="text-orange">{{goodslis.des}}</span>
           </div>
         </van-cell>
@@ -78,10 +78,10 @@
     </van-cell-group>
 
     <van-goods-action>
-      <van-goods-action-icon icon="chat-o" @click="sorry">客服</van-goods-action-icon>
+      <van-goods-action-icon icon="chat-o" >客服</van-goods-action-icon>
       <van-goods-action-icon icon="cart-o" @click="onClickCart">购物车</van-goods-action-icon>
-      <van-goods-action-button type="warning" @click="sorry">加入购物车</van-goods-action-button>
-      <van-goods-action-button type="danger" @click="sorry">立即购买</van-goods-action-button>
+      <van-goods-action-button type="warning" >加入购物车</van-goods-action-button>
+      <van-goods-action-button type="danger" >立即购买</van-goods-action-button>
     </van-goods-action>
   </div>
 </template>
@@ -104,19 +104,14 @@ export default {
 
   },
   methods: {
-    formatPrice(index) {
-      return "¥" + (index / 100).toFixed(2);
-    },
     onClickCart() {
-      this.$router.push("cart");
-    },
-    sorry() {
-      Toast("暂无后续逻辑~");
+      console.log(this.$route)
+      this.$router.push('cart');
     },
     onConfirm() {
       this.$refs.item.toggle();
     },
-    onChange(index) {
+    onChange(index) { // 图片滑动轮播
       this.current = index;
     },
       // 以上均为组件自带方法

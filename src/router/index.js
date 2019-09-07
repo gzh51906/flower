@@ -23,7 +23,7 @@ export default new Router({
       name: 'home',
       component: home,
       meta: {
-        footShow: true // true显示，false隐藏
+        footShow: true // true显示，false隐藏 底部导航栏
       }
     },
     {
@@ -57,6 +57,9 @@ export default new Router({
       meta: {
         footShow: false // true显示，false隐藏
       }
+      // beforeEnter(to,from,next){
+      //   console.log(to)
+      // }
     },
     {
       path: '/xiangqing/:id',
