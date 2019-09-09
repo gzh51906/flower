@@ -83,7 +83,7 @@ export default {
           id: "10",
           title: "商品名字",
           desc: "快递信息,没有就为空",
-          price: 3333333,
+          price: 34,
           num: 1,
           thumb:
             "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg"
@@ -151,7 +151,7 @@ export default {
       return (price / 100).toFixed(2);
     },
     onSubmit() {
-      Toast("点击结算");
+      this.$router.push('/pay')
     }
   }
 };

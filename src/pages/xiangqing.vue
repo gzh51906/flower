@@ -134,6 +134,7 @@ export default {
         return ProductPrices;
       })
       // console.log('goods',goods)   state.cartlist = state.cartlist.filter(item=>item.goods_id!=id);
+      // 过滤 取得需要的传来的商品
       let goodsli = goods.filter((item,index,goods)=>item.ItemCode === id)[0]
 
       this.goodslis = {

@@ -420,7 +420,7 @@ export default {
       Toast("返回");
     },
     gotolist(id) {
-      this.$router.push({ name: "goods", params: { id } });
+      this.$router.replace({ name: "goods", params: { id } });
     },
 
   },

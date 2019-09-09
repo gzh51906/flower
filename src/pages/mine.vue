@@ -2,7 +2,7 @@
   <div id="box">
     <div>
       <van-nav-bar title="个人中心">
-        <van-icon name="arrow-left" slot="left" />
+        <van-icon name="arrow-left" slot="left"  @click="goback()"/>
       </van-nav-bar>
     </div>
     <!-- main部分 -->
@@ -13,7 +13,13 @@
           <p class="userinformation-notlogin-hi">Hi,欢迎来到花礼网</p>
           <p class="userinformation-notlogin-gologin">
             <!-- 登陆/注册 -->
-            <van-button round size="large" type="default">登陆/注册</van-button>
+            <span v-if="gosuccess()">
+              <van-button round size="large" type="default" @click="gologin()">登陆/注册</van-button>
+            </span>
+            <span v-else>
+              <van-button round size="large" type="default">你好</van-button>
+            </span>
+
           </p>
         </div>
       </div>
@@ -126,7 +132,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    // 返回上一级
+    goback() {
+      this.$router.go(-1);
+    },
+    // 跳到登录页面
+    gologin() {
+      this.$router.push("login")
+    },
+    gosuccess(){
+      return true;
+      // return !this.$store.state.common.authorization;
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped >

@@ -101,26 +101,11 @@ export default {
     // this.getData(id);
   },
   methods:{
-    goback() {
-      console.log('this.$route',this.$route)
-      // this.$router.push(this.$route.path)
+    goback() { // 返回上一级
       this.$router.go(-1)
     }
-  },
-  beforeRouterEnter(to,from,next) {
-    console.log(to)
-    console.log(from)
-    // next(vm =>{
-    //   vm.oldurl = from.path
-    // })
-  },
-  mounted() {
-    this.$nextTick(()=>{
-       // 验证是否获取到了上页的url
-       /* eslint-disable no-console */
-       console.log('oldurl',this.oldurl)
-     })
   }
+
 };
 </script>
 
