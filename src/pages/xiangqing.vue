@@ -129,10 +129,12 @@ export default {
 
     // 接收商品传来的id并请求数据以及渲染到详情页
     async getData(id) {
-      let goods = await this.$axios.post("https://www.easy-mock.com/mock/5d6a724b081c747c411d450d/home")
-      .then(({ data: { Datas: { ProductPrices } } }) => {
-        return ProductPrices;
-      })
+      let shuju = await this.$axios
+      .get("http://localhost:1991/goods")
+      .then(({data:{data}}) => {
+        return data;
+      });
+      let goods = shuju[0].Datas.ProductPrices;
       // console.log('goods',goods)   state.cartlist = state.cartlist.filter(item=>item.goods_id!=id);
       // 过滤 取得需要的传来的商品
       let goodsli = goods.filter((item,index,goods)=>item.ItemCode === id)[0]

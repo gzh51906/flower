@@ -512,21 +512,16 @@ export default {
       this.$router.push({ name: "xiangqing", params: { id } });
     }
   },
-  beforeRouterEnter(to,from,next) {
-    console.log(to)
-    console.log(from)
-    // next(vm =>{
-    //   vm.oldurl = from.path
-    // })
-  },
 
   // 请求数据
   async created() {
-    let shouye = await this.$axios
-      .post("https://www.easy-mock.com/mock/5d6a724b081c747c411d450d/home")
-      .then(({ data: { Datas: { ProductPrices } } }) => {
-        return ProductPrices;
+    let shuju = await this.$axios
+      .get("http://localhost:1991/goods")
+      .then(({data:{data}}) => {
+        return data;
       });
+      let shouye = shuju[0].Datas.ProductPrices;
+      // console.log(shouye)
     this.aiqing = shouye.slice(0, 8);
     this.zhangbei = shouye.slice(8, 14);
     this.yongshenghua = shouye.slice(14, 18);

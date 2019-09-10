@@ -144,7 +144,7 @@ export default {
     },
     gosuccess(){
       return true;
-      // return !this.$store.state.common.authorization;
+      return !this.$store.state.common.authorization;
     }
   }
 };

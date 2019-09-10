@@ -20,7 +20,7 @@
     </van-field>
   </van-cell-group>
     <van-cell-group v-if="email_type">
-      <van-field v-model="email" placeholder="请输入邮箱或者用户名" />
+      <van-field v-model="email" placeholder="请输入邮箱" />
       <van-field
               v-model="password"
               center
@@ -35,7 +35,7 @@
     </div>
     <van-nav-bar
             v-if= "phone_type"
-            left-text="邮箱或者用户名登陆>"
+            left-text="邮箱登陆>"
             right-text="注册"
             @click-left="changetype"
             @click-right="onClickRight"
@@ -68,8 +68,14 @@ export default {
       this.$router.push(path)
     },
     async code_phone () {
+
+
+      console.log(
+         this.phone,
+         this.email,
+       this.password);
       if (this.phone_type) {
-        let {data} = await this.$axios.post('http://localhost:1906/user/login', {
+        let {data} = await this.$axios.post('http://localhost:1991/user/login', {
           username: this.phone,
           password: this.password,
           email: this.email
@@ -82,7 +88,7 @@ export default {
           alert('用户名或密码错误')
         }
       } else if (this.email_type) {
-        let {data} = await this.$axios.post('http://localhost:1906/user/login', {
+        let {data} = await this.$axios.post('http://localhost:1991/user/login', {
           username: this.phone,
           password: this.password,
           email: this.email

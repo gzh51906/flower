@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import loginVue from './login.vue';
 export default {
   name: 'reg',
   data () {
@@ -119,11 +120,17 @@ export default {
       this.phone_type = !this.phone_type
     },
     async reg_person () {
-      let {data} = await this.$axios.post('http://127.0.0.1:1906/user/reg', {
+
+
+
+
+      let {data} = await this.$axios.post('http://localhost:1991/user/reg', {
         username: this.phone,
         email: this.email,
         password: this.password
       })
+
+
     },
     code_text () {
       if (/^1[3456789]\d{9}$/.test(this.phone) && this.password === this.checkpassword) {

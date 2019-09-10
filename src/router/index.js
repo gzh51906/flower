@@ -115,7 +115,7 @@ router.beforeEach(function (to, from, next) {
     let authorization = localStorage.getItem('Authorization')
     if (authorization) {
       // 发起校验,判断token是否过期或者被伪造
-      axios.get('http://localhost:1906/verify', {
+      axios.get('http://47.104.78.143:1991/verify', {
         headers: {
           Authorization: authorization
         }
