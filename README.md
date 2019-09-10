@@ -37,3 +37,9 @@
  ![Image text](https://github.com/gzh51906/flower/blob/dev/img-folder/30.png)
  
  ![Image text](https://github.com/gzh51906/flower/blob/dev/img-folder/50.png)
+
+![Image text](https://github.com/gzh51906/flower/blob/dev/img-folder/Home.png)
+
+![Image text](https://github.com/gzh51906/flower/blob/dev/img-folder/mine.png)
+
+![Image text](https://github.com/gzh51906/flower/blob/dev/img-folder/showcart.png)
